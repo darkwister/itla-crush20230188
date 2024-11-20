@@ -1,5 +1,5 @@
 import './App.css';
-import handleSubmit from './handles/handlesubmit';
+import handleSubmit from './handler/handlesubmit';
 import { useRef } from 'react';
  
 function App() {
@@ -7,14 +7,15 @@ function App() {
  
   const submithandler = (e) => {
     e.preventDefault()
-    handleSubmit(dataRef.current.value)
+    handleSubmit()
     dataRef.current.value = ""
   }
  
   return (
     <div className="App">
       <form onSubmit={submithandler}>
-        <input type= "text" ref={dataRef} />
+        <input type= "text" ref="User"/>
+        <input type= "text" ref="Password"/>
         <button type = "submit">Save</button>
       </form>
     </div>
