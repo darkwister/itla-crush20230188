@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom";
+import './mainScreen.css'
 
-
-export default function mainScreen(){
+export default function MainScreen(){
     return (
-        <div className="container-fluid mainScreen-component p-0 m-0 me-0 ms-0 d-flex flex-column">
-          <div className="home-btn-txt">
-            <p className="text-info fs-3">
+        <div>
+          <div className="main-container">
+            <p className="headline">
               Dedicale unas palabras a ese ITLASIAN@ que te gusta!
             </p>
-              <Link to="/letters">
-                <div>
-                  Ver declaraciones
-                </div>
-              </Link>
-            <p>Declaratele a esa persona que te gusta, 
+            <div className="link-container">
+              <Link to="/letters" className="btn">
+                  Ver declaraciones   
+              </Link> 
+            </div>
+            <p className="description">Declaratele a esa persona que te gusta, 
             declaralo al mundo de forma publica o 
-            ser mas discreto haciendolo de forma anonima.
-            TÚ decides como mostrar tu amor</p>
+            ser mas discreto haciendolo de forma anonima. <br></br>
+            <span className="highlight">TÚ decides como mostrar tu amor</span></p>
           </div>
         </div>
       )

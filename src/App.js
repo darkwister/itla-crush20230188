@@ -1,15 +1,12 @@
 import './App.css';
 import FormRegister from './components/registerComponent/registerForm'
-import { Routes } from 'react-router-dom';
-import {mainScreen} from './components/mainScreenComponent/mainScreen'
+import { Routes, Route } from 'react-router-dom';
+import MainScreen from './components/mainScreenComponent/mainScreen';
  
-function App() {
-
- 
+const App = () => (
   <Routes>
-    <Routes path="/" element={<mainScreen />} />
+    <Route path="/" element={<MainScreen />} />
   </Routes>
-
-}
+)
  
 export default App;
