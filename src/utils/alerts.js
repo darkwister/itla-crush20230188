@@ -22,4 +22,4 @@ import withReactContent from 'sweetalert2-react-content';
         })
     }
 
-    export{successAlert, failureAlert}
+    export{ successAlert, failureAlert }
