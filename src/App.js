@@ -3,6 +3,7 @@ import FormRegister from './components/registerComponent/registerForm'
 import { Routes, Route } from 'react-router-dom';
 import MainScreen from './components/mainScreenComponent/mainScreen';
 import NavBar from './components/navBarComponent/NavBar';
+import LoginForm from './components/loginComponent/loginForm';
 
  
 const App = () => (
@@ -11,6 +12,7 @@ const App = () => (
   <Routes>
     <Route path="/" element={<MainScreen />} />
     <Route path="/register" element={<FormRegister/>} />
+    <Route path="/login" element={<LoginForm/>}/>
   </Routes>
   </div>
 )

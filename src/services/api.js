@@ -10,8 +10,8 @@ export const addUser = async (data) => {
     await addDoc(collection(db, 'usuarios'), data);
 }
 
-export const authUser = async (email, pass) => {
-    const qry = query(collection(db, 'usuarios'), where('email', '==', email), where('password', '==', pass));
+export const authUser = async (email, password) => {
+    const qry = query(collection(db, 'usuarios'), where('email', '==', email), where('password', '==', password));
     const result = await getDocs(qry);
     
     if (result.docs.length > 0)
