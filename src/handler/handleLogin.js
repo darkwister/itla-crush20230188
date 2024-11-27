@@ -1,12 +1,15 @@
 import { addDoc, collection } from "@firebase/firestore"
-import { firestore } from "../services/firebase"
+import { firestore } from "../services/firebaseConfig"
  
-const handleSubmit = async (user, password) => {
+const handleSubmit = async (user, password, nombre, apellido, email) => {
     const ref = collection(firestore, "usuarios") // Firebase creates this automatically
  
     let data = {
         user: user,
-        password: password
+        password: password,
+        nombre: nombre,
+        apellido: apellido,
+        email: email
     };
     
     try {
