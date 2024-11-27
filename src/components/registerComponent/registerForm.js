@@ -1,4 +1,4 @@
-import { Form, useState } from "react";
+import { useState } from "react";
 import { successAlert, failureAlert } from '../../utils/alerts.js';
 import { addUser } from "../../services/api";
 import './registerForm.css'
