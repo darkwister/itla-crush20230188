@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { successAlert, failureAlert } from '../../utils/alerts.js';
 import { addUser } from "../../services/api";
-import './registerForm.css'
+import './Forms.css'
 
 export default function FormRegister(){
     const [user, setUser] = useState("");
@@ -122,6 +122,3 @@ export default function FormRegister(){
         </div>
       );
 }
-
-
-

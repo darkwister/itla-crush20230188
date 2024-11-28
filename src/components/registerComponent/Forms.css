@@ -19,7 +19,7 @@ form {
 }
 
 button {
-    background-color: #007bff; 
+    background-color: #65558F; 
     color: white; 
     padding: 10px 15px;
     border: none;
@@ -29,7 +29,7 @@ button {
 }
   
 button:hover {
-background-color: #0056b3; 
+background-color: #a889f8; 
 }
 
 label {
@@ -56,3 +56,13 @@ label {
     border-color: #007bff; 
     outline: none; 
   }
+
+.btn-primary {
+    background-color: #65558F !important; /* Cambia el color de fondo */
+    border-color: #65558F !important;     /* Cambia el color del borde */
+}
+
+.btn-primary:hover {
+    background-color: #a889f8 !important; /* Cambia el color al pasar el mouse */
+    border-color: #a889f8 !important;     /* Cambia el color del borde al pasar el mouse */
+}

@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getSession, destroySession } from '../../services/apiSession';
 import './NavBar.css';
 
 export default function NavBar() {
+  const session = getSession();
+  
+  const handleLogout = () => {
+    destroySession(); // Cierra sesión y redirige al login
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
@@ -26,12 +33,31 @@ export default function NavBar() {
             <li className="nav-item">
               <Link to="/declaraciones" className="nav-link">Letters</Link>
             </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">Login</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/register" className="nav-link">Register</Link>
-            </li>
+              {session ? (
+              // Si hay sesión, muestra el nombre del usuario y una opción de logout
+              <>
+                <li className="nav-item">
+                  <Link to="/perfil" className="nav-link">
+                    {session.nombre || 'Mi Perfil'}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <button className="btn btn-link nav-link" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              // Si no hay sesión, muestra Login y Register
+              <>
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">Login</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/register" className="nav-link">Register</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

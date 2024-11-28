@@ -28,5 +28,10 @@
   }
   
   .navbar .nav-links a:hover {
-    color: #6b5b95; /* Color del hover */
+    color: #6b5b95; 
   }
+
+  .navbar.bg-primary {
+    background-color: #65558F !important; 
+  }
+  

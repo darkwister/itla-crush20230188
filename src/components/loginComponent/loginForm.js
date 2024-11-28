@@ -1,10 +1,9 @@
 import './loginForm.css';
 import { useState } from "react";
-import { authUser, getUsers } from '../../services/api';
+import { authUser } from '../../services/api';
 import { successAlert, failureAlert } from '../../utils/alerts';
 import { Navigate } from 'react-router-dom';
 import { getSession, insertSession } from '../../services/apiSession';
-import bootstrap from 'bootstrap';
 
 export default function LoginForm(){
     
@@ -24,7 +23,7 @@ export default function LoginForm(){
 
     return (
       <>
-        {getSession() && <Navigate replace to="/" />}
+        {getSession() && <Navigate replace to="/profile" />}
         <div className="container d-flex justify-content-center align-items-center min-vh-100 margin-auto">
           <form className="bg-light p-4 rounded shadow" style={{ maxWidth: '400px', width: '100%' }}>
             <div className="mb-3">
