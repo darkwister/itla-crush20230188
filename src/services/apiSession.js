@@ -3,7 +3,7 @@
         if (typeof value !== 'boolean') {
             window.localStorage.setItem('sesion', JSON.stringify(value));
             setTimeout(() => {
-                window.location.replace('/perfil');
+                window.location.replace('/profile');
             }, 1000);
         } else {
             return false;

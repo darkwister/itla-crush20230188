@@ -5,7 +5,7 @@ import './NavBar.css';
 
 export default function NavBar() {
   const session = getSession();
-  
+
   const handleLogout = () => {
     destroySession(); // Cierra sesión y redirige al login
   };
@@ -31,13 +31,13 @@ export default function NavBar() {
               <Link to="/" className="nav-link">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/declaraciones" className="nav-link">Letters</Link>
+              <Link to="/ver-declaraciones" className="nav-link">Declaraciones</Link>
             </li>
               {session ? (
               // Si hay sesión, muestra el nombre del usuario y una opción de logout
               <>
                 <li className="nav-item">
-                  <Link to="/perfil" className="nav-link">
+                  <Link to="/profile" className="nav-link">
                     {session.nombre || 'Mi Perfil'}
                   </Link>
                 </li>
