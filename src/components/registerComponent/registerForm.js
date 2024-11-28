@@ -39,34 +39,88 @@ export default function FormRegister(){
     }
 
     return (
-        <form onSubmit={createUser}>
-            <div>
-                <label>Nombre:</label>
-                <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} required />
+        <div className="container d-flex justify-content-center align-items-center min-vh-100">
+          <form
+            onSubmit={createUser}
+            className="bg-light p-4 rounded shadow"
+            style={{ maxWidth: '500px', width: '100%' }}
+          >
+            <h2 className="text-center mb-4">Registro</h2>
+            
+            <div className="mb-3">
+              <label className="form-label">Nombre:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                required
+              />
             </div>
-            <div>
-                <label>Apellido:</label>
-                <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} required />
+    
+            <div className="mb-3">
+              <label className="form-label">Apellido:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={apellido}
+                onChange={(e) => setApellido(e.target.value)}
+                required
+              />
             </div>
-            <div>
-                <label>Usuario:</label>
-                <input type="text" value={user} onChange={(e) => setUser(e.target.value)} required />
+    
+            <div className="mb-3">
+              <label className="form-label">Usuario:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={user}
+                onChange={(e) => setUser(e.target.value)}
+                required
+              />
             </div>
-            <div>
-                <label>Email:</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+    
+            <div className="mb-3">
+              <label className="form-label">Email:</label>
+              <input
+                type="email"
+                className="form-control"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </div>
-            <div>
-                <label>Contraseña:</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+    
+            <div className="mb-3">
+              <label className="form-label">Contraseña:</label>
+              <input
+                type="password"
+                className="form-control"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
-            <div>
-                <label>Confirmar Contraseña:</label>
-                <input type="password" value={validPass} onChange={(e) => setValPassword(e.target.value)} required />
+    
+            <div className="mb-3">
+              <label className="form-label">Confirmar Contraseña:</label>
+              <input
+                type="password"
+                className="form-control"
+                value={validPass}
+                onChange={(e) => setValPassword(e.target.value)}
+                required
+              />
             </div>
-            <button type="submit">Registrar</button>
-        </form>
-    );
+    
+            <div className="text-center">
+              <button type="submit" className="btn btn-primary w-100">
+                Registrar
+              </button>
+            </div>
+          </form>
+        </div>
+      );
 }
 
 

@@ -5,6 +5,7 @@ register-form{
   height: 100vh;
   background-color: #f2f2f2;
   padding: 20px;
+  align-self: center;
 }
 
 form {
@@ -16,8 +17,6 @@ form {
     align-self: baseline;
     text-align: center;
 }
-
-
 
 button {
     background-color: #007bff; 

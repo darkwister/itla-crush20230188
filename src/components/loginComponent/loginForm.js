@@ -4,6 +4,7 @@ import { authUser, getUsers } from '../../services/api';
 import { successAlert, failureAlert } from '../../utils/alerts';
 import { Navigate } from 'react-router-dom';
 import { getSession, insertSession } from '../../services/apiSession';
+import bootstrap from 'bootstrap';
 
 export default function LoginForm(){
     
@@ -22,39 +23,44 @@ export default function LoginForm(){
     }
 
     return (
-        <>
-          {getSession() && <Navigate replace to="/" />}
-          <form>
-            <div>
-              <label htmlFor="exampleInputEmail4">Email</label>
-              <input 
-                type="email" 
-                onChange={e => setEmail(e.target.value)} 
-                id="exampleInputEmail3" 
-                aria-describedby="emailHelp" 
-                required 
+      <>
+        {getSession() && <Navigate replace to="/" />}
+        <div className="container d-flex justify-content-center align-items-center min-vh-100 margin-auto">
+          <form className="bg-light p-4 rounded shadow" style={{ maxWidth: '400px', width: '100%' }}>
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail4" className="form-label">Email</label>
+              <input
+                type="email"
+                className="form-control"
+                onChange={e => setEmail(e.target.value)}
+                id="exampleInputEmail3"
+                aria-describedby="emailHelp"
+                required
               />
             </div>
-    
-            <div>
-              <label htmlFor="exampleInputPassword1">Contraseña</label>
-              <input 
-                type="password" 
-                onChange={e => setPassword(e.target.value)} 
-                id="exampleInputPassword1" 
-                required 
+  
+            <div className="mb-3">
+              <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
+              <input
+                type="password"
+                className="form-control"
+                onChange={e => setPassword(e.target.value)}
+                id="exampleInputPassword1"
+                required
               />
             </div>
-    
-            <div>
-              <button 
-                type="submit" 
+  
+            <div className="text-center">
+              <button
+                type="submit"
+                className="btn btn-primary"
                 onClick={authorization}
               >
                 Iniciar sesión
               </button>
             </div>
           </form>
-        </>
-      );
-}
+        </div>
+      </>
+    );
+  }

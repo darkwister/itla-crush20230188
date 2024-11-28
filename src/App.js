@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainScreen from './components/mainScreenComponent/mainScreen';
 import NavBar from './components/navBarComponent/NavBar';
 import LoginForm from './components/loginComponent/loginForm';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
  
 const App = () => (
