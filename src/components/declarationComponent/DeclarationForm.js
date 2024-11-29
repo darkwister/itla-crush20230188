@@ -44,10 +44,20 @@ export default function DeclarationForm() {
         failureAlert('Error al registrar');
       }
     };
+
+    if (!getSession()) {
+      failureAlert("No estás registrado. Debes estar registrado para hacer declaraciones.");
+      return <Navigate replace to="/view-declaration" />;
+    };
   
     return (
       <>
-        {!getSession() && <Navigate replace to="/view-declaration" />}
+        {!getSession() && (
+          <>
+            {failureAlert("No estás registrado. Debes estar registrado para hacer declaraciones.")}
+            <Navigate replace to="/view-declaration" />
+          </>
+        )}
         <form className="mx-auto my-5 border border-info shadow-lg p-4">
           <div className="mb-3 mu-5">
             <label htmlFor="destinatarySelect" className="form-label">
