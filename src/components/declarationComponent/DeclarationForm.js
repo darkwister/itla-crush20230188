@@ -7,6 +7,7 @@ import './DeclarationForm.css';
 
 export default function DeclarationForm() {
     const [dest, setDest] = useState('cant');
+    const [customDest, setCustomDest] = useState('');
     const [words, setWords] = useState('');
     const [pub, setPublic] = useState(true);
     const [anon, setAnon] = useState(false);
@@ -15,116 +16,124 @@ export default function DeclarationForm() {
     useEffect(() => {
       async function listUsers() {
         const us = await getUsers();
-        setUsers(us.docs.map(doc => doc.data()));
+        setUsers(us.docs.map((doc) => doc.data()));
       }
-  
       listUsers();
     }, []);
   
     const insertLetter = async (e) => {
       e.preventDefault();
   
-      if (dest === 'cant') {
-        failureAlert('Destinatary not selected');
+      const destinatary = dest === 'other' ? customDest : dest;
+  
+      if (!destinatary || destinatary === 'cant') {
+        failureAlert('Destinatario no seleccionado');
         return;
       }
   
       try {
         const session = getSession();
         await addDeclaration({
-          destinatary: dest,
+          destinatary,
           body: words,
           allowPublic: pub,
           anonymous: anon,
-          author: anon ? 'Anonymous' : `${session.name} ${session.lastname}`
+          author: anon ? 'Anonymous' : `${session.name} ${session.lastname}`,
         });
-        successAlert('Letter registered');
+        successAlert('Declaracion registrada!');
       } catch (error) {
-        failureAlert('Error to register');
+        failureAlert('Error al registrar');
       }
     };
   
     return (
-        <>
-          {!getSession() && <Navigate replace to="/view-declaration" />}
-          <form className="mx-auto my-0 border border-info shadow-lg text-info p-4">
-            <div className="mb-3">
-              <label htmlFor="destinatarySelect" className="form-label">Destinatario</label>
-              <select
-                id="destinatarySelect"
-                className="form-select"
-                value={dest}
-                onChange={e => setDest(e.target.value)}
-                aria-label="Default select example"
-              >
-                <option value="cant">Selecciona un usuario</option>
-                {users.map((element, index) => (
-                  <option key={index} value={`${element.name} ${element.lastname}`}>
-                    {`${element.name} ${element.lastname}`}
-                  </option>
-                ))}
-                <option value="other">Other</option>
-              </select>
-              {dest === 'other' && (
-                <div className="mb-3">
-                  <br />
-                  <label htmlFor="customDestinatary" className="form-label">Destinatario personalizado</label>
-                  <input
-                    id="customDestinatary"
-                    type="text"
-                    onChange={e => setDest(e.target.value)}
-                    className="form-control"
-                    required
-                  />
-                </div>
-              )}
-            </div>
-            <div className="mb-3">
-              <label htmlFor="wordsTextarea" className="form-label">Tus bellas palabras</label>
-              <textarea
-                id="wordsTextarea"
-                value={words}
-                onChange={e => setWords(e.target.value)}
-                className="form-control"
-                required
+      <>
+        {!getSession() && <Navigate replace to="/view-declaration" />}
+        <form className="mx-auto my-0 border border-info shadow-lg text-info p-4">
+          <div className="mb-3">
+            <label htmlFor="destinatarySelect" className="form-label">
+              Destinatario
+            </label>
+            <select
+              id="destinatarySelect"
+              className="form-select"
+              value={dest}
+              onChange={(e) => setDest(e.target.value)}
+              aria-label="Default select example"
+            >
+              <option value="cant">Selecciona un usuario</option>
+              {users.map((element, index) => (
+                <option key={index} value={`${element.name} ${element.lastname}`}>
+                  {`${element.name} ${element.lastname}`}
+                </option>
+              ))}
+              <option value="other">Other</option>
+            </select>
+            {dest === 'other' && (
+              <div className="mb-3">
+                <br />
+                <label htmlFor="customDestinatary" className="form-label">
+                  Destinatario personalizado
+                </label>
+                <input
+                  id="customDestinatary"
+                  type="text"
+                  value={customDest}
+                  onChange={(e) => setCustomDest(e.target.value)}
+                  className="form-control"
+                  required
+                />
+              </div>
+            )}
+          </div>
+          <div className="mb-3">
+            <label htmlFor="wordsTextarea" className="form-label">
+              Tus bellas palabras
+            </label>
+            <textarea
+              id="wordsTextarea"
+              value={words}
+              onChange={(e) => setWords(e.target.value)}
+              className="form-control"
+              required
+            />
+          </div>
+          <div className="form-check">
+            <div className="check-public">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="flexCheckChecked"
+                checked={pub}
+                onChange={() => setPublic(!pub)}
               />
+              <label className="form-check-label" htmlFor="flexCheckChecked">
+                Quieres hacer publica esta declaracion?
+              </label>
             </div>
-            <div className="form-check">
-              <div className="check-public">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="flexCheckChecked"
-                  defaultChecked={true}
-                  onChange={() => setPublic(!pub)}
-                />
-                <label className="form-check-label" htmlFor="flexCheckChecked">
-                  This declaration is public
-                </label>
-              </div>
-              <div className="check-anonymous">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="flexCheckChecked2"
-                  defaultChecked={false}
-                  onChange={() => setAnon(!anon)}
-                />
-                <label className="form-check-label" htmlFor="flexCheckChecked2">
-                  Your are anonymous?
-                </label>
-              </div>
+            <div className="check-anonymous">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="flexCheckChecked2"
+                checked={anon}
+                onChange={() => setAnon(!anon)}
+              />
+              <label className="form-check-label" htmlFor="flexCheckChecked2">
+                Quieres hacerla anonima?
+              </label>
             </div>
-            <div className="button-register w-100 d-flex justify-content-center">
-              <button
-                type="submit"
-                onClick={insertLetter}
-                className="btn btn-primary text-secondary form-btn-submit mt-3"
-              >
-                Send
-              </button>
-            </div>
-          </form>
-        </>
-      );
-    }
+          </div>
+          <div className="button-register w-100 d-flex justify-content-center">
+            <button
+              type="submit"
+              onClick={insertLetter}
+              className="btn btn-primary form-btn-submit mt-3"
+            >
+              Send
+            </button>
+          </div>
+        </form>
+      </>
+    );
+  }
