@@ -37,9 +37,14 @@ export default function DeclarationForm() {
           body: words,
           allowPublic: pub,
           anonymous: anon,
-          author: anon ? 'Anonymous' : `${session.name} ${session.lastname}`,
+          author: anon ? 'Anonimo' : `${session.name} ${session.lastname}`,
         });
         successAlert('Declaracion registrada!');
+        setDest("");
+        setCustomDest("");
+        setWords("");
+        setPublic(true);
+        setAnon(false);
       } catch (error) {
         failureAlert('Error al registrar');
       }
