@@ -12,11 +12,14 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    justify-self: center;
     height: 100vh;
-    padding: 0 20px;
     box-sizing: border-box;
-    border-radius: 40px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9); /* Blanco con un 90% de opacidad */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 50px;
+    size-adjust: auto;
+    max-width: 800px;
   }
   
   .main-container .headline {
