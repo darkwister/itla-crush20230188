@@ -3,7 +3,6 @@ import { Navigate } from 'react-router-dom';
 import { addDeclaration, getUsers } from '../../services/api';
 import { getSession } from '../../services/apiSession';
 import { failureAlert, successAlert } from '../../utils/alerts';
-import './DeclarationForm.css';
 
 export default function DeclarationForm() {
     const [dest, setDest] = useState('cant');
@@ -49,8 +48,8 @@ export default function DeclarationForm() {
     return (
       <>
         {!getSession() && <Navigate replace to="/view-declaration" />}
-        <form className="mx-auto my-0 border border-info shadow-lg text-info p-4">
-          <div className="mb-3">
+        <form className="mx-auto my-5 border border-info shadow-lg p-4">
+          <div className="mb-3 mu-5">
             <label htmlFor="destinatarySelect" className="form-label">
               Destinatario
             </label>

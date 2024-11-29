@@ -1,4 +1,3 @@
-import './loginForm.css';
 import { useState } from "react";
 import { authUser } from '../../services/api';
 import { successAlert, failureAlert } from '../../utils/alerts';
@@ -24,9 +23,9 @@ export default function LoginForm(){
     return (
       <>
         {getSession() && <Navigate replace to="/profile" />}
-        <div className="container d-flex justify-content-center align-items-center min-vh-100 margin-auto">
+        <div className="container d-flex justify-content-center align-items-center min-vh-100 margin-auto mt-5">
           <form className="bg-light p-4 rounded shadow" style={{ maxWidth: '400px', width: '100%' }}>
-            <div className="mb-3">
+            <div className="mb-6">
               <label htmlFor="exampleInputEmail4" className="form-label">Email</label>
               <input
                 type="email"
