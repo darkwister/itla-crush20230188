@@ -25,7 +25,7 @@ export default function ProfileCard() {
         </div>
     </form>
     <div className="button-register w-100 d-flex justify-content-center">
-        <Link to="/do-declaracion" type="submit" className="btn btn-primary form-btn-submit mt-3">Hacer una declaracion</Link>
+        <Link to="/do-declaration" type="submit" className="btn btn-primary form-btn-submit mt-3">Hacer una declaracion</Link>
     </div>
     
     </>
