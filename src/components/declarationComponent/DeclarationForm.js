@@ -67,7 +67,7 @@ export default function DeclarationForm() {
                   {`${element.name} ${element.lastname}`}
                 </option>
               ))}
-              <option value="other">Other</option>
+              <option value="other">Personalizado...</option>
             </select>
             {dest === 'other' && (
               <div className="mb-3">
