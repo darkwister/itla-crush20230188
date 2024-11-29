@@ -33,3 +33,9 @@ export const getDeclaration = async (pub) => {
   
     return result.docs;
 }
+
+export const checkEmailExists = async (email) => {
+    const qry = query(collection(db, 'usuarios'), where('email', '==', email));
+    const result = await getDocs(qry);
+    return result.docs.length > 0; 
+};

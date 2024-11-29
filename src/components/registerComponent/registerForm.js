@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { successAlert, failureAlert } from '../../utils/alerts.js';
-import { addUser } from "../../services/api";
+import { addUser, checkEmailExists } from "../../services/api";
 import './Forms.css'
 
 export default function FormRegister(){
@@ -11,20 +11,26 @@ export default function FormRegister(){
     const [apellido, setApellido] = useState("");
     const [email, setEmail] = useState("");
 
-    const createUser = (e) => {
+    const createUser = async (e) => {
         e.preventDefault();
         if (password !== validPass) {
             failureAlert('Contraseña no coincide');
             return;
         }
         try {
-            addUser({
-                name: nombre,
-                lastname: apellido,
-                username: user,
-                email: email,
-                password: password
-            });
+           const emailExists = await checkEmailExists(email);
+           if (emailExists) {
+               failureAlert('Este correo ya está registrado.');
+               return;
+           }
+
+           await addUser({
+               name: nombre,
+               lastname: apellido,
+               username: user,
+               email: email,
+               password: password
+           });
             successAlert('Usuario registrado!');
 
             setUser("");
@@ -33,6 +39,7 @@ export default function FormRegister(){
             setNombre("");
             setApellido("");
             setEmail("");
+
         } catch (error) {
             failureAlert('Usuario no registrado!');
         }
