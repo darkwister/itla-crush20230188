@@ -9,7 +9,7 @@ export default function MainScreen(){
               Dedicale unas palabras a ese ITLASIAN@ que te gusta!
             </p>
             <div className="link-container">
-              <Link to="/declaraciones" className="btn">
+              <Link to="/view-declaration" className="btn">
                   Ver declaraciones
               </Link> 
             </div>

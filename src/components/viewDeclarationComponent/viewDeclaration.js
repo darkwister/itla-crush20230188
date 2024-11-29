@@ -33,11 +33,11 @@ export default function ViewDeclaration() {
   
     return (
       <div className="container-fluid w-75 mx-auto p-0">
-        <p className="text-center fs-3">¡El amor está en el aire!</p>
+        <p className="text-center fs-3 container mu-3 mb-2 mx-auto">¡El amor está en el aire!</p>
         <div className="row letters-btns-bar mb-5">
           <Link
             to="/do-declaration"
-            className="btn btn-primary text-center col-sm-12 col-md-12 col-lg-3 col-xxl-2 my-lg-0 my-1 mx-1"
+            className="btn btn-primary text-center col-sm-12 col-md-12 col-lg-3 col-xxl-2 my-lg-0 my-1 mx-4"
           >
             Haz tu declaración
           </Link>
