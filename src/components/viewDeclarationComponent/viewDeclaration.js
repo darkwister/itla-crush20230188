@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { getDeclaration } from "../../services/api";
 import { getSession } from "../../services/apiSession";
 import Declaration from "./Declaration";
-import './viewDeclaration.css';
 
 export default function ViewDeclaration() {
     const [declaraciones, setDeclaraciones] = useState([]);
@@ -35,10 +34,10 @@ export default function ViewDeclaration() {
     return (
       <div className="container-fluid w-75 mx-auto p-0">
         <p className="text-center fs-3">¡El amor está en el aire!</p>
-        <div className="row letters-btns-bar">
+        <div className="row letters-btns-bar mb-5">
           <Link
             to="/do-declaration"
-            className="btn btn-primary col-sm-12 col-md-12 col-lg-3 col-xxl-2 my-lg-0 my-1 mx-1"
+            className="btn btn-primary text-center col-sm-12 col-md-12 col-lg-3 col-xxl-2 my-lg-0 my-1 mx-1"
           >
             Haz tu declaración
           </Link>

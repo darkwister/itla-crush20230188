@@ -10,7 +10,7 @@ export default function MainScreen(){
             </p>
             <div className="link-container">
               <Link to="/declaraciones" className="btn">
-                  Ver declaraciones   
+                  Ver declaraciones
               </Link> 
             </div>
             <p className="description">Declaratele a esa persona que te gusta, 
