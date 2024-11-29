@@ -1,4 +1,4 @@
-import {collection, getDocs, getDoc, query, doc,  addDoc, deleteDoc, updateDoc, where} from "firebase/firestore";
+import {collection, getDocs, query, addDoc, where} from "firebase/firestore";
 import { db } from './firebaseConfig';
 
 export const getUsers = async () => {
@@ -20,11 +20,11 @@ export const authUser = async (email, password) => {
     return false;
 }
 
-export const addLetter = async (data) => {
+export const addDeclaration = async (data) => {
     await addDoc(collection(db, 'declaracion'), data);
 }
 
-export const getLetters = async (pub) => {
+export const getDeclaration = async (pub) => {
     let result;
     if (pub)
         result = await getDocs(query(collection(db, 'declaracion'), where('allowPublic', '==', pub)));
