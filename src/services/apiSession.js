@@ -1,4 +1,3 @@
-    import { DocumentData } from "firebase/firestore";
     export function insertSession(value) {
         if (typeof value !== 'boolean') {
             window.localStorage.setItem('sesion', JSON.stringify(value));
